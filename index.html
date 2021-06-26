@@ -50,13 +50,13 @@
         }
 
         function getMessages() {
-            $.get('http://localhost:3010/messages', (data) => {
+            $.get('https://pure-brushlands-47398.herokuapp.com//messages', (data) => {
                 data.forEach(addMessages);
             })
         }
 
         function postMessage(message) {
-            $.post('http://localhost:3010/messages', message);
+            $.post('https://pure-brushlands-47398.herokuapp.com//messages', message);
         }
     </script>
     <!-- Option 2: Separate Popper and Bootstrap JS -->
