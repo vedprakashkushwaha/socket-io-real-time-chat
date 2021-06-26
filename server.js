@@ -4,12 +4,13 @@ const bodyParser = require('body-parser');
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 const mongoose = require('mongoose');
+const cors = require('cors')
 const port = process.env.PORT || 5000;
 
 app.use(express.static(__dirname));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
-
+app.use(cors());
 const Messages = mongoose.model('Messages', {
     name: String,
     message: String
