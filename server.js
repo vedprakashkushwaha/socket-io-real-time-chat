@@ -39,16 +39,20 @@ app.get('/messages', (req,res) => {
 
 app.post('/messages', (req,res) => {
     // messages.push(req.body)
-    message = new Messages(req.body);
-    message.save((err)=>{
-        if(err){
-            console.log(err);
-            res.sendStatus(500);
-        }
+    if(req.body.name && req.body.message) {
+        message = new Messages(req.body);
+        message.save((err)=>{
+            if(err){
+                console.log(err);
+                res.sendStatus(500);
+            }
 
-        io.emit('message', req.body);
-        res.sendStatus(200);
-    })
+            io.emit('message', req.body);
+            res.sendStatus(200);
+        })
+    } else {
+        res.sendStatus(500);
+    }
 })
 
 
